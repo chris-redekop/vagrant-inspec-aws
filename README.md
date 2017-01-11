@@ -1,6 +1,7 @@
 # vagrant-inspec-aws
 
 ## Steps required after `vagrant up`:
+1. `$ vagrant ssh`
 1. set **AWS_DEFAULT_REGION**
 1. set **AWS_ACCESS_KEY_ID**
 1. set **AWS_SECRET_ACCESS_KEY**
