@@ -8,6 +8,10 @@ Vagrant.configure("2") do |config|
     vb.name = "inspec-aws"
   end
 
+  config.vm.provision "file", source: "~/.ssh/config", destination: ".ssh/" 
+  config.vm.provision "file", source: "~/.ssh/id_rsa.github", destination: ".ssh/" 
+  config.vm.provision "file", source: "~/.ssh/id_rsa.github.pub", destination: ".ssh/" 
+
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
     apt-get purge -y ruby
@@ -16,6 +20,6 @@ Vagrant.configure("2") do |config|
       dpkg -i chefdk_1.1.16-1_amd64.deb 
     popd
     apt-get install -y git
-    sed -e 's#"$#:/opt/chefdk/embedded/bin"#' /etc/environment
+    sed -ie 's#"$#:/opt/chefdk/embedded/bin"#' /etc/environment
   SHELL
 end
