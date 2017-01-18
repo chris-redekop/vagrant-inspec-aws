@@ -49,7 +49,7 @@ build-iPhoneSimulator/
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
 
-ssh/config
-ssh/id_rsa
-ssh/id_rsa.pub
-etc/aws-vars
+!ssh/config.sample
+!etc/aws-vars.sample
+ssh/
+etc/
