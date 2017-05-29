@@ -24,9 +24,9 @@ Vagrant.configure("2") do |config|
       dpkg -i chefdk_1.1.16-1_amd64.deb 
       rm chefdk_1.1.16-1_amd64.deb
 
-      wget -q https://releases.hashicorp.com/terraform/0.8.4/terraform_0.8.4_linux_amd64.zip
-      unzip terraform_0.8.4_linux_amd64.zip -d /usr/bin
-      rm terraform_0.8.4_linux_amd64.zip
+      wget -q https://releases.hashicorp.com/terraform/0.9.6/terraform_0.9.6_linux_amd64.zip
+      unzip terraform_0.9.6_linux_amd64.zip -d /usr/bin
+      rm terraform_0.9.6_linux_amd64.zip
 
       cat aws-vars >> /etc/environment
       rm aws-vars
