@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ubuntu/zesty64"
 
   config.vm.provider "virtualbox" do |vb|
     vb.name = "inspec-aws"
@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
     chmod 400 /home/ubuntu/.ssh/id_rsa
 
     apt-get update
-    apt-get install -y git unzip zlib1g-dev bundler
+    apt-get install -y git unzip zlib1g-dev bundler python3.6 python3-pip
 
     pushd /tmp
       wget -q https://packages.chef.io/files/stable/chefdk/1.1.16/ubuntu/14.04/chefdk_1.1.16-1_amd64.deb
@@ -33,8 +33,10 @@ Vagrant.configure("2") do |config|
     popd
 
     sed -ie 's#"$#:/opt/chefdk/bin"#' /etc/environment
+    sed -ie 's#PATH="#PATH="/home/ubuntu/.local/bin:#' /etc/environment
 
     sudo -i -u ubuntu sh -c 'ssh-keyscan github.com >> ~/.ssh/known_hosts'
     sudo -i -u ubuntu sh -c 'cd /home/ubuntu && git clone git@github.com:chef/inspec-aws.git'
+    sudo -i -u ubuntu sh -c 'cd /home/ubuntu/inspec-aws && bundle install'
   SHELL
 end
