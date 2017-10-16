@@ -8,3 +8,5 @@
 ## Steps required after `vagrant up`:
 1. `$ vagrant ssh`
 1. `$ inspec exec inspec-aws`
+
+Foo.
